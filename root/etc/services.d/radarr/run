@@ -1,0 +1,17 @@
+#!/usr/bin/with-contenv bash
+
+UMASK_SET=${UMASK_SET:-022}
+umask "$UMASK_SET"
+
+redirect_cmd() {
+	if [[ "${DEBUG}" == "true" ]]; then
+		"$@"
+	else
+		"$@" >/dev/null 2>&1
+	fi
+}
+
+redirect_cmd exec s6-setuidgid abc \
+	/app/readarr/bin/Readarr \
+	-nobrowser \
+	-data=/config
