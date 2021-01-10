@@ -11,6 +11,7 @@ redirect_cmd() {
 	fi
 }
 
+echo "Starting Readarr."
 redirect_cmd exec s6-setuidgid abc \
 	/app/readarr/bin/Readarr \
 	-nobrowser \
