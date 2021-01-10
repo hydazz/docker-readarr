@@ -31,7 +31,7 @@ jobs:
                "tag_name": "'$VERSION'",
                "target_commitish": "'$main'",
                "name": "'$VERSION'",
-               "body": "Upgrading Radarr '$OLD_VERSION' to '$VERSION'",
+               "body": "Upgrading Readarr '$OLD_VERSION' to '$VERSION'",
                "draft": false,
                "prerelease": false
           }' >releasebody.json
