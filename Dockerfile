@@ -13,11 +13,6 @@ RUN set -xe && \
    echo "**** install build packages ****" && \
    apk add --no-cache --virtual=build-dependencies \
       curl && \
-   echo "**** install runtime packages ****" && \
-   apk add --no-cache --upgrade \
-      libmediainfo \
-      sqlite-libs \
-      xmlstarlet && \
    echo "**** install fpcalc ****" && \
    curl -o \
       /tmp/fpcalc.tar.gz -L \
