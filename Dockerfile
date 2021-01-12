@@ -1,4 +1,4 @@
-FROM vcxpz/baseimage-alpine-dotnet
+FROM vcxpz/baseimage-alpine-arr
 
 # set version label
 ARG BUILD_DATE
