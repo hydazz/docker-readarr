@@ -14,7 +14,7 @@ RUN set -xe && \
    apk add --no-cache --virtual=build-dependencies \
       curl && \
    echo "**** install fpcalc ****" && \
-   curl -o \
+   curl --silent -o \
       /tmp/fpcalc.tar.gz -L \
       "https://github.com/acoustid/chromaprint/releases/download/v1.5.0/chromaprint-fpcalc-1.5.0-linux-x86_64.tar.gz" && \
    tar xzf \
@@ -24,7 +24,7 @@ RUN set -xe && \
    echo "**** install readarr ****" && \
    mkdir -p /app/readarr/bin && \
    ARCH=$(curl -sSL https://raw.githubusercontent.com/hydazz/scripts/main/docker/archer.sh | bash) && \
-   curl -o \
+   curl --silent -o \
       /tmp/readarr.tar.gz -L \
       "https://readarr.servarr.com/v1/update/${READARR_BRANCH}/updatefile?version=${READARR_RELEASE}&os=linuxmusl&runtime=netcore&arch=${ARCH}" && \
    tar xzf \
