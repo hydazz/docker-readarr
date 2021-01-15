@@ -1,6 +1,6 @@
 ## docker-readarr
 
-[![docker hub](https://img.shields.io/badge/docker_hub-link-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/r/vcxpz/readarr) ![docker image size](https://img.shields.io/docker/image-size/vcxpz/readarr?style=for-the-badge&logo=docker) [![auto build](https://img.shields.io/badge/docker_builds-automated-blue?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-readarr/actions?query=workflow%3A"Auto+Builder+CI")
+[![docker hub](https://img.shields.io/badge/docker_hub-link-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/r/vcxpz/readarr) ![docker image size](https://img.shields.io/docker/image-size/vcxpz/readarr?style=for-the-badge&logo=docker) [![auto build](https://img.shields.io/badge/docker_builds-automated-blue?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-readarr/actions?query=workflow%3A"Auto+Builder+CI") [![codacy branch grade](https://img.shields.io/codacy/grade/6df098f605074ee780f9f2fe472b52c4/main?style=for-the-badge)](https://app.codacy.com/gh/hydazz/docker-readarr)
 
 [Readarr](https://https://readarr.com//) is a ebook (and maybe eventually magazine/audiobook) collection manager for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new books from your favourite authors and will grab, sort and rename them.
 
