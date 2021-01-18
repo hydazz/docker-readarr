@@ -2,12 +2,12 @@ FROM vcxpz/baseimage-alpine-arr:latest
 
 # set version label
 ARG BUILD_DATE
-ARG READARR_RELEASE
-LABEL build_version="Readarr version:- ${READARR_RELEASE} Build-date:- ${BUILD_DATE}"
+ARG VERSION
+LABEL build_version="Readarr version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="hydaz"
 
 # environment settings
-ARG READARR_BRANCH
+ARG BRANCH
 
 RUN set -xe && \
    echo "**** install build packages ****" && \
@@ -26,11 +26,11 @@ RUN set -xe && \
    ARCH=$(curl -sSL https://raw.githubusercontent.com/hydazz/scripts/main/docker/archer.sh | bash) && \
    curl --silent -o \
       /tmp/readarr.tar.gz -L \
-      "https://readarr.servarr.com/v1/update/${READARR_BRANCH}/updatefile?version=${READARR_RELEASE}&os=linuxmusl&runtime=netcore&arch=${ARCH}" && \
+      "https://readarr.servarr.com/v1/update/${BRANCH}/updatefile?version=${VERSION}&os=linuxmusl&runtime=netcore&arch=${ARCH}" && \
    tar xzf \
       /tmp/readarr.tar.gz -C \
       /app/readarr/bin --strip-components=1 && \
-   printf "UpdateMethod=docker\nBranch=${READARR_BRANCH}\n" > /app/readarr/package_info && \
+   printf "UpdateMethod=docker\nBranch=${BRANCH}\n" > /app/readarr/package_info && \
    echo "**** cleanup ****" && \
    apk del --purge \
       build-dependencies && \
