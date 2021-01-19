@@ -1,4 +1,5 @@
-FROM vcxpz/baseimage-alpine-arr:latest
+ARG TAG
+FROM vcxpz/baseimage-alpine-arr:${TAG}
 
 # set version label
 ARG BUILD_DATE
