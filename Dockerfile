@@ -24,7 +24,7 @@ RUN \
    mv /tmp/fpcalc /usr/local/bin && \
    echo "**** install readarr ****" && \
    mkdir -p /app/readarr/bin && \
-   ARCH=$(curl -sSL https://raw.githubusercontent.com/hydazz/scripts/main/docker/archer.sh | bash) && \
+   ARCH=$(curl -sSL https://raw.githubusercontent.com/hydazz/docker-utils/main/docker/archer.sh | bash) && \
    curl --silent -o \
      /tmp/readarr.tar.gz -L \
      "https://readarr.servarr.com/v1/update/${BRANCH}/updatefile?version=${VERSION}&os=linuxmusl&runtime=netcore&arch=${ARCH}" && \
