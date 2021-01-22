@@ -52,7 +52,7 @@ jobs:
           export IMAGE="vcxpz/ci-build:ci-build"
           export TEST_SEARCH="Starting Web Server"
           export RUN_ARGS="-e DEBUG=true"
-          curl -sSL https://raw.githubusercontent.com/hydazz/scripts/main/docker/docker-ci.sh | bash
+          curl -sSL https://raw.githubusercontent.com/hydazz/docker-utils/main/docker/docker-ci.sh | bash
 
       - name: Build And Push The Docker Image
         run: |
