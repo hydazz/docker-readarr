@@ -1,7 +1,6 @@
 #!/usr/bin/with-contenv bash
 
-UMASK_SET=${UMASK_SET:-022}
-umask "$UMASK_SET"
+umask ${UMASK_SET:-022}
 
 redirect_cmd() {
 	if [[ "${DEBUG}" == "true" ]]; then
