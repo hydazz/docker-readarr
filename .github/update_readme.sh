@@ -30,6 +30,12 @@ See [package_versions.txt](package_versions.txt) for a full list of the packages
 
 [![template](https://img.shields.io/badge/unraid_template-ff8c2f?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-templates/blob/main/hydaz/readarr.xml)
 
+## Environment Variables
+
+| Name    | Description                                                                                              | Default Value |
+| ------- | -------------------------------------------------------------------------------------------------------- | ------------- |
+| \`DEBUG\` | set \`true\` to display errors in the Docker logs. When set to \`false\` the Docker log is completely muted. | \`false\`       |
+
 ## Upgrading Readarr
 
 To upgrade, all you have to do is pull the latest Docker image. We automatically check for Readarr updates daily so there may be some delay when an update is released to when the image is updated.
