@@ -4,12 +4,6 @@
 
 [Readarr](https://https://readarr.com//) is a ebook (and maybe eventually magazine/audiobook) collection manager for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new books from your favourite authors and will grab, sort and rename them.
 
-## Version Information
-
-![alpine](https://img.shields.io/badge/alpine-edge-0D597F?style=for-the-badge&logo=alpine-linux) ![readarr](https://img.shields.io/badge/readarr-0.1.0.432-blue?style=for-the-badge)
-
-See [package_versions.txt](package_versions.txt) for a full list of the packages and package versions used in this image
-
 ## Usage
 
     docker run -d \
