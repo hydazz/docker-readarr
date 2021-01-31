@@ -11,7 +11,6 @@
       -e PUID=1000 \
       -e PGID=1000 \
       -e TZ=Australia/Melbourne \
-      -e UMASK_SET=022 `#optional` \
       -e DEBUG=true/false `#optional` \
       -p 8787:8787 \
       -v <path to appdata>:/config \
