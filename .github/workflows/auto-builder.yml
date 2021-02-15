@@ -39,7 +39,10 @@ jobs:
 
       - name: Build The Docker Image For Testing
         run: |
-          docker build \
+          docker buildx build \
+            --platform=amd64 \
+            --output "type=docker" \
+            --build-arg BUILD_DATE="$(date +%Y-%m-%d)" \
             --build-arg VERSION=$(curl -sX GET "https://api.github.com/repos/hydazz/docker-readarr/releases/latest" | jq -r .tag_name) \
             --build-arg BRANCH="nightly" \
             --tag vcxpz/ci-build:ci-build \
