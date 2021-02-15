@@ -1,11 +1,11 @@
-ARG TAG
-FROM vcxpz/baseimage-alpine-arr:${TAG}
+FROM vcxpz/baseimage-alpine:latest
 
 # set version label
 ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Readarr version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="hydaz"
+ARG CHROMAPRINT_VERSION="1.5.0"
 
 # environment settings
 ARG BRANCH
@@ -17,12 +17,15 @@ RUN \
 	echo "**** install fpcalc ****" && \
 	curl --silent -o \
 		/tmp/fpcalc.tar.gz -L \
-		"https://github.com/acoustid/chromaprint/releases/download/v1.5.0/chromaprint-fpcalc-1.5.0-linux-x86_64.tar.gz" && \
+		"https://github.com/acoustid/chromaprint/releases/download/v${CHROMAPRINT_VERSION}/chromaprint-fpcalc-${CHROMAPRINT_VERSION}-linux-x86_64.tar.gz" && \
 	tar xzf \
 		/tmp/fpcalc.tar.gz -C \
 		/tmp/ --strip-components=2 && \
 	mv /tmp/fpcalc /usr/local/bin && \
 	echo "**** install readarr ****" && \
+	if [ -z ${VERSION+x} ]; then \
+		VERSION=$(curl -sL "https://readarr.servarr.com/v1/update/nightly/changes?os=linuxmusl" | jq -r ".[0].version"); \
+	fi && \
 	mkdir -p /app/readarr/bin && \
 	ARCH=$(curl -sSL https://raw.githubusercontent.com/hydazz/docker-utils/main/docker/archer.sh | bash) && \
 	curl --silent -o \
