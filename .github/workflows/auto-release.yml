@@ -19,8 +19,8 @@ jobs:
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
-          VERSION=$(curl -sL "https://readarr.servarr.com/v1/update/nightly/changes?os=linuxmusl" | jq -r ".[0].version")
-          OLD_VERSION=$(curl -sX GET "https://api.github.com/repos/hydazz/docker-readarr/releases/latest" | jq -r .tag_name)
+          VERSION=$(curl -sL "https://readarr.servarr.com/v1/update/nightly/changes?os=linuxmusl" | jq -r '.[0].version')
+          OLD_VERSION=$(curl -sL "https://api.github.com/repos/hydazz/docker-readarr/releases/latest" | jq -r '.tag_name')
           printf '{
                "tag_name": "'${VERSION}'",
                "target_commitish": "'${main}'",
