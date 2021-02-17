@@ -8,23 +8,26 @@ LABEL maintainer="hydaz"
 ARG CHROMAPRINT_VERSION="1.5.0"
 
 # environment settings
-ARG BRANCH
+ARG BRANCH="nightly"
 
 RUN \
 	echo "**** install build packages ****" && \
 	apk add --no-cache --virtual=build-dependencies \
-		curl && \
-	echo "**** install fpcalc ****" && \
-	curl --silent -o \
-		/tmp/fpcalc.tar.gz -L \
-		"https://github.com/acoustid/chromaprint/releases/download/v${CHROMAPRINT_VERSION}/chromaprint-fpcalc-${CHROMAPRINT_VERSION}-linux-x86_64.tar.gz" && \
-	tar xzf \
-		/tmp/fpcalc.tar.gz -C \
-		/tmp/ --strip-components=2 && \
-	mv /tmp/fpcalc /usr/local/bin && \
+		curl \
+		jq && \
+	if [ $(arch) = "x86_64" ]; then \
+		echo "**** install fpcalc ****"; \
+		curl --silent -o \
+			/tmp/fpcalc.tar.gz -L \
+			"https://github.com/acoustid/chromaprint/releases/download/v${CHROMAPRINT_VERSION}/chromaprint-fpcalc-${CHROMAPRINT_VERSION}-linux-x86_64.tar.gz"; \
+		tar xzf \
+			/tmp/fpcalc.tar.gz -C \
+			/tmp/ --strip-components=2; \
+		mv /tmp/fpcalc /usr/local/bin; \
+	fi && \
 	echo "**** install readarr ****" && \
 	if [ -z ${VERSION+x} ]; then \
-		VERSION=$(curl -sL "https://readarr.servarr.com/v1/update/nightly/changes?os=linuxmusl" | jq -r ".[0].version"); \
+		VERSION=$(curl -sL "https://readarr.servarr.com/v1/update/${BRANCH}/changes?os=linuxmusl" | jq -r '.[0].version'); \
 	fi && \
 	mkdir -p /app/readarr/bin && \
 	ARCH=$(curl -sSL https://raw.githubusercontent.com/hydazz/docker-utils/main/docker/archer.sh | bash) && \
