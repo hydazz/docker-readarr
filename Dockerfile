@@ -47,7 +47,7 @@ COPY root/ /
 
 # readarr healthcheck
 HEALTHCHECK --start-period=10s --timeout=5s \
-	CMD wget -qO /dev/null 'http://localhost:8787/api/system/status' \
+	CMD wget -qO /dev/null 'http://localhost:8787/api/v1/system/status' \
 	--header "x-api-key: $(xmlstarlet sel -t -v '/Config/ApiKey' /config/config.xml)"
 
 # ports and volumes
