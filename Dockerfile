@@ -15,7 +15,7 @@ RUN \
 	apk add --no-cache --virtual=build-dependencies \
 		curl \
 		jq && \
-	if [ $(arch) = "x86_64" ]; then \
+	if [ "$(arch)" = "x86_64" ]; then \
 		echo "**** install fpcalc ****"; \
 		curl --silent -o \
 			/tmp/fpcalc.tar.gz -L \
