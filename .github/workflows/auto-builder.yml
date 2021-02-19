@@ -37,7 +37,7 @@ jobs:
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
 
-      - name: Build The Docker Image For Testing
+      - name: Build The Docker Image Locally
         run: |
           docker buildx build \
             --platform=amd64 \
