@@ -10,12 +10,13 @@ ARG CHROMAPRINT_VERSION="1.5.0"
 # environment settings
 ARG BRANCH="nightly"
 
-RUN \
+RUN set -xe && \
 	echo "**** install build packages ****" && \
 	apk add --no-cache --virtual=build-dependencies \
 		curl \
 		jq && \
 	if [ "$(arch)" = "x86_64" ]; then \
+		ARCH="x64"; \
 		echo "**** install fpcalc ****"; \
 		curl --silent -o \
 			/tmp/fpcalc.tar.gz -L \
@@ -24,13 +25,14 @@ RUN \
 			/tmp/fpcalc.tar.gz -C \
 			/tmp/ --strip-components=2; \
 		mv /tmp/fpcalc /usr/local/bin; \
+	elif [ "$(arch)" == "aarch64" ]; then \
+		ARCH="arm64"; \
 	fi && \
 	echo "**** install readarr ****" && \
 	if [ -z ${VERSION+x} ]; then \
 		VERSION=$(curl -sL "https://readarr.servarr.com/v1/update/${BRANCH}/changes?os=linuxmusl" | jq -r '.[0].version'); \
 	fi && \
 	mkdir -p /app/readarr/bin && \
-	ARCH=$(curl -sSL https://raw.githubusercontent.com/hydazz/docker-utils/main/docker/archer.sh | bash) && \
 	curl --silent -o \
 		/tmp/readarr.tar.gz -L \
 		"https://readarr.servarr.com/v1/update/${BRANCH}/updatefile?version=${VERSION}&os=linuxmusl&runtime=netcore&arch=${ARCH}" && \
