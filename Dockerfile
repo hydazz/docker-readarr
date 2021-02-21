@@ -10,7 +10,7 @@ ARG CHROMAPRINT_VERSION="1.5.0"
 # environment settings
 ARG BRANCH="nightly"
 
-RUN && \
+RUN \
 	echo "**** install build packages ****" && \
 	apk add --no-cache --virtual=build-dependencies \
 		curl \
