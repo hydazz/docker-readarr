@@ -25,7 +25,7 @@ jobs:
                "tag_name": "'${VERSION}'",
                "target_commitish": "'${main}'",
                "name": "'${VERSION}'",
-               "body": "Upgrading Readarr '${OLD_VERSION}' to '${VERSION}'",
+               "body": "Upgrading Readarr '${OLD_VERSION}' to '${VERSION}' \n[Changelog](https://github.com/readarr/readarr/releases/tag/${VERSION})",
                "draft": false,
                "prerelease": false
           }' >releasebody.json
