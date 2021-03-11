@@ -25,8 +25,10 @@ RUN \
 			/tmp/fpcalc.tar.gz -C \
 			/tmp/ --strip-components=2; \
 		mv /tmp/fpcalc /usr/local/bin; \
-	elif [ "$(arch)" == "aarch64" ]; then \
+	elif [ "$(arch)" = "aarch64" ]; then \
 		ARCH="arm64"; \
+	else \
+		exit 1; \
 	fi && \
 	echo "**** install readarr ****" && \
 	if [ -z ${VERSION+x} ]; then \
