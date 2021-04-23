@@ -31,7 +31,7 @@ RUN set -xe && \
 		exit 1; \
 	fi && \
 	echo "**** install readarr ****" && \
-	if [ -z ${VERSION+x} ]; then \
+	if [ -z ${VERSION} ]; then \
 		VERSION=$(curl -sL "https://readarr.servarr.com/v1/update/nightly/changes?os=linuxmusl&runtime=netcore" | jq -r '.[0].version'); \
 	fi && \
 	mkdir -p /app/readarr/bin && \
